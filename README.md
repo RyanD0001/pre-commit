@@ -14,7 +14,7 @@ This pre-commit will check your terraform modules sources to make sure you are n
 This pre-commit will clean up your terraform cache
 
 
-#### Example of .pre-commit-config.yaml file using terraform
+#### Example of .pre-commit-config.yaml file for working with terraform files
 ```
 default_stages: [push]
 repos:
@@ -27,7 +27,7 @@ repos:
         stages: [commit]
   ```      
         
-#### Example of .pre-commit-config.yaml file using python
+#### Example of .pre-commit-config.yaml for working with python files
 ```
 default_stages: [push]
 repos:
