@@ -35,5 +35,6 @@ repos:
     rev: v0.0.1 #use the latest release
     hooks:
       - id: requirements-txt-fixer
+        files: 'requirements.txt'
         stages: [commit]
 ```
