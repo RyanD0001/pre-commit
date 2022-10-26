@@ -15,7 +15,7 @@ This pre-commit will clean up your terraform cache
 
 
 #### Example of .pre-commit-config.yaml file using terraform
-
+```
 default_stages: [push]
 repos:
   - repo: https://github.com/RyanD0001/pre-commit
@@ -25,11 +25,15 @@ repos:
         files: '.*(.tf|.tfvars)'
         exclude: '(.terragrunt-cache/|.terraform/|.terraform.lock|examples/)'
         stages: [commit]
-        
+  ```      
         
 #### Example of .pre-commit-config.yaml file using python
+```
+default_stages: [push]
+repos:
   - repo: https://github.com/RyanD0001/pre-commit
     rev: v0.0.1 #use the latest release
     hooks:
       - id: requirements-txt-fixer
         stages: [commit]
+```
