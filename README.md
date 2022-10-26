@@ -25,6 +25,9 @@ repos:
         files: '.*(.tf|.tfvars)'
         exclude: '(.terragrunt-cache/|.terraform/|.terraform.lock|examples/)'
         stages: [commit]
+      - id: tf-cache-cleanup
+        files: '.*(.tf|.tfvars)'
+        stages: [commit]
   ```      
         
 #### Example of .pre-commit-config.yaml for working with python files
