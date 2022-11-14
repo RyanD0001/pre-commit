@@ -62,7 +62,9 @@ def fix_requirements(f: IO[bytes]) -> int:
     requirements: list[Requirement] = []
     before = list(f)
     after: list[bytes] = []
-    regexp = re.compile(rb".*(?<!=)==")
+    # added regex
+    regexp = re.compile(rb"(==)")
+    
     before_string = b"".join(before)
 
     # adds new line in case one is missing
@@ -92,8 +94,10 @@ def fix_requirements(f: IO[bytes]) -> int:
                 requirement.comments.append(line)
         elif line.lstrip().startswith(b"#") or line.strip() == b"":
             requirement.comments.append(line)
+        
         elif not regexp.match(line):
-            line = line.replace(b"=", b"==")
+            # makes sure only '==' is between the module name and version e.g uwsgi==2.0.20 and not uwsgi== _+-*2.0.20
+            line = re.sub(b"([^a-z0-9][\W_]+)",b"==",line)
             requirement.append_value(line)
 
         else:
